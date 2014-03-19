@@ -1,0 +1,35 @@
+.done {
+    color: gray;
+    text-decoration:line-through;
+}
+
+.true {
+    color: gray;
+    text-decoration:line-through;}
+
+.deleted .todo-text {
+    color: green;
+}
+
+button[type="button"] {
+    padding: 8px 15px;
+    background: #4479BA;
+    color: #FFF;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+.normal {
+    padding: 4px 10px;
+    background: #4479BA;
+    color: #FFF;
+    -webkit-border-radius: 8px;
+}
+input[type="text"] {
+    padding:8px 15px;
+}
+p.emptyList {
+    color: red;
+}
+p.inList {
+    color:black;
+}
