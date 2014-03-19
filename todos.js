@@ -101,8 +101,7 @@
          var n = $( "input:checked" ).length;
 
          $.each(toDoList, function(item) {
-            if(item.deleted)
-            {
+            if(item.deleted){
                 deleted++;
             }
          });
