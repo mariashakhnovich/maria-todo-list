@@ -51,7 +51,7 @@
                         }
                  });*/
                 for (var i = 0; i<toDoList.length; i++) {
-                    if (toDoList[i].length === todoId) {
+                    if (toDoList[i].id === todoId) {
                         todoList[i].deleted = true;
                         displayTodos();
                         showProgress();
