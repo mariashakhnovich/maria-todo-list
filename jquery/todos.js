@@ -73,29 +73,29 @@
      }
 
      function showProgress() {
-         var nd;
-         var totalClass;
-         var deleted = 0;
-         var n = getDoneTasks(toDoList).length;
+         var progressHelperMessage;
+         var progressMessageClassName;
+         var tasksDeleted = 0;
+         var tasksDone = getDoneTasks(toDoList).length;
          var hbrsText = todoTemplate(data);
 
          $.each(toDoList, function(i, val) {
             if (val.deleted){
-                deleted++;
+                tasksDeleted++;
             }
         })
 
         var totalTasks = toDoList.length;
-        if (deleted === totalTasks) {
-             totalClass = "emptyList";
-             nd = "Enter a task!";
+        if (tasksDeleted === totalTasks) {
+             progressMessageClassName = "emptyList";
+             progressHelperMessage = "Enter a task!";
         } else {
-             var temp = totalTasks - deleted;
-             nd = "Done: " + n + " out of " + temp;
-             totalClass = "inList";
+             var temp = totalTasks - tasksDeleted;
+             progressHelperMessage = "Done: " + tasksDone + " out of " + temp;
+             progressMessageClassName = "inList";
          }
 
-         UI.total.text(nd).removeClass().addClass(totalClass);
+         UI.total.text(progressHelperMessage).removeClass().addClass(progressMessageClassName); //can move setting of class to handlebars
          UI.tasks.html(hbrsText);
      }
 
@@ -107,7 +107,7 @@
         } else {
             toDoList[todoId].checked = "";
         }
-        
+
         showProgress();
         return false;
     }).on("click", ".delete", function(event) {
@@ -125,5 +125,3 @@
      UI.selectAllBtn.click(selectAll);
      UI.deleteDoneBtn.click(deleteDone);
  }(window));
-
-
