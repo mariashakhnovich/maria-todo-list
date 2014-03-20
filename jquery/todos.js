@@ -8,6 +8,7 @@
          selectAllBtn: $("#selectAll"),
          deleteDoneBtn: $("#deleteDone")
      };
+
      var todoTemplate = Handlebars.compile(UI.todos.html());   
      var toDoList = [];
      var data = {"tasks": toDoList };
@@ -16,6 +17,7 @@
          this.text = text;
          this.done = done;
      };
+
      function addNewTask() {
          var text = UI.text.val();
          var done = false;
@@ -28,10 +30,12 @@
          }  
          showProgress();
      }
+
      function displayTodos() {
          var hbrs_text = todoTemplate(data);
          UI.tasks.html(hbrs_text);
      }
+
      function selectAll() {
         if (toDoList.length === 0) {
             var trueOrFalse = true;
@@ -45,16 +49,16 @@
         displayTodos();
         showProgress();  
      }
+
      function deleteDone() {
-        $.each(toDoList, function(i, val){
-            if(val.done){
-                val.done = false;
-                val.deleted = true;
-            }
+        $.each(getDoneTasks(toDoList), function(i, val){
+            val.done = false;
+            val.deleted = true;
         })
         displayTodos();
         showProgress();
-     }     
+     } 
+
      function getDoneTasks(list) {
         var doneTasks = [];
         $.each(toDoList, function(i, val){
@@ -64,6 +68,7 @@
         })
         return doneTasks;  
      }
+
      function showProgress() {
          var nd;
          var totalClass;
@@ -74,6 +79,7 @@
                 deleted++;
             }
         })
+
         var totalTasks = toDoList.length;
         if (deleted === totalTasks) {
              totalClass = "emptyList";
@@ -85,8 +91,10 @@
              nd = "Done: " + n + " out of " + temp;
              totalClass = "inList";
          }  
+         
          UI.total.text(nd).removeClass().addClass(totalClass);
      }
+
      UI.tasks.on("click", "input", function(event) {
         var todoId = $(this).closest("div").data("id");
         var isDone = toDoList[todoId].done;
@@ -107,6 +115,7 @@
         })
         return false;
      });
+
      UI.addBtn.click(addNewTask);
      UI.selectAllBtn.click(selectAll);
      UI.deleteDoneBtn.click(deleteDone);
