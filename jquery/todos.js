@@ -22,10 +22,11 @@
          var done = false;
          var id = toDoList.length;
          var newTask = new Task(id, text, done);
-         
+         console.log('you clicked add new task, but you are not inside if statement');
          if (newTask.text !== "") {
              toDoList.push(newTask);
              UI.text.val("");
+             console.log("i live inside the tasks if statement");
              displayTodos();
          }
          
@@ -62,6 +63,7 @@
     });
      
      function displayTodos() {
+        console.log("i live inside displayTodos");
          var hbrs_text = todoTemplate(data);
          UI.tasks.html(hbrs_text);
      }

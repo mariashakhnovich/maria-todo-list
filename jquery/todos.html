@@ -4,8 +4,9 @@
 <html>
 <head>
 	<link rel="stylesheet" type="css/text" href="todos.css"/>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/x-handlebars-template" src="todos.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js" type="text/javascript"></script>
+    <script src="todos.js"></script>
 </head>
 <body>
     <header>My ToDo list</header>
@@ -17,12 +18,15 @@
         <button type="button" id="deleteDone">Delete Done</button>
             <div id="tasks"></div>
             <script id="todos" type="text/x-handlebars-template">  
-                {{#each tasks}} 
-                {{#unless deleted}}
+               {{#each tasks}} 
+                {{#unless deleted}} 
                 <div class="{{#if done}}done{{/if}}" data-id="{{id}}"> 
-                        <label><input type = "checkbox" value = "{{text}}"/><span  data-class = "{{done}}">{{text}}</span></label>
+                        <label>
+                        <input type = "checkbox" value = "{{text}}"/><span data-class="{{done}}">{{text}}</span>
+                        </input>
+                        </label>
                         <button class="normal delete">X</button>      
-                     </div>
+                </div>
                 {{/unless}}
                 {{/each}} 
             </script>
