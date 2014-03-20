@@ -96,8 +96,7 @@
         showProgress();
         displayTodos();
         return false;
-    });
-     UI.tasks.on("click", ".delete", function(event) {
+    }).on("click", ".delete", function(event) {
         var todoId = $(this).closest("div").data("id");
         $.each(toDoList, function(i, val){
             if (val.id ===todoId) {
