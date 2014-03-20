@@ -5,6 +5,7 @@
          text: $("#txt")
      };
      
+
      var todoTemplate = Handlebars.compile($('#todos').html());   
      var toDoList = [];
      var data = {"tasks": toDoList };
@@ -22,11 +23,9 @@
          var done = false;
          var id = toDoList.length;
          var newTask = new Task(id, text, done);
-         console.log('you clicked add new task, but you are not inside if statement');
          if (newTask.text !== "") {
              toDoList.push(newTask);
              UI.text.val("");
-             console.log("i live inside the tasks if statement");
              displayTodos();
          }
          
@@ -35,9 +34,11 @@
 
      UI.tasks.on("click", "input", function(event) {
                  var todoId = $(this).closest("div").data("id");
-                 toDoList[todoId].done = !toDoList[todoId].done;          
+                 toDoList[todoId].done = !toDoList[todoId].done;
+                 $(this).closest("input").prop("checked", toDoList[todoId].done);          
                  $(this).closest("div").toggleClass("done");
                  showProgress();
+                 displayTodos();
                  return false;
      });
 
@@ -53,7 +54,7 @@
                  });*/
                 for (var i = 0; i<toDoList.length; i++) {
                     if (toDoList[i].id === todoId) {
-                        todoList[i].deleted = true;
+                        toDoList[i].deleted = true;
                         displayTodos();
                         showProgress();
                     }
@@ -63,7 +64,6 @@
     });
      
      function displayTodos() {
-        console.log("i live inside displayTodos");
          var hbrs_text = todoTemplate(data);
          UI.tasks.html(hbrs_text);
      }
@@ -102,11 +102,18 @@
          var deleted = 0;
          var n = $( "input:checked" ).length;
 
-         $.each(toDoList, function(item) {
+        /* $.each(toDoList, function(item) {
             if(item.deleted){
                 deleted++;
             }
-         });
+         }); */
+        for (var i = 0; i<toDoList.length; i++) {
+            if (toDoList[i].deleted){
+                deleted++;
+            }
+        }
+
+
 
 
          var totalTasks = toDoList.length;
