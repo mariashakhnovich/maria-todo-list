@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="css/text" href="todos.css"/>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script type="text/x-handlebars-template" src="todos.js">/</script>
+</head>
+<body>
+    <header>My ToDo list</header>
+    <article id="main">
+        <div id ="primarybox">
+        <input type="text" id="txt" placeholder="Enter your task here" value="" />
+        <button type="button" id="addButton">Add task</button>
+            <button type="button" id="selectAll">Select/Clear All</button>
+        <button type="button" id="deleteDone">Delete Done</button>
+            <div id="tasks"></div>
+            <script id="todos" type="text/x-handlebars-template">  
+                {{#each tasks}} 
+                {{#unless deleted}}
+                <div class="{{#if done}}done{{/if}}" data-id="{{id}}" > 
+                        <label><input type = "checkbox" value = "{{text}}"/><span  data-class = "{{done}}">{{text}}</span></label>
+                        <button class="normal delete">X</button>      
+                     </div>
+                {{/unless}}
+                {{/each}} 
+            </script>
+        </div>
+    </article>
+    <p id="total" class="emptyList">Enter a task!</p>
+    
+</body>
+<!-- Requirements:1. You have a list of Todos. 2. I should be able to add and remove them. 3. I can mark a todo as done. 4. I have a way of selecting all the items. 5. I see a total at the bottom of my todos: done/total. -->
+</html>
