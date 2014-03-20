@@ -18,7 +18,7 @@
             <script id="todos" type="text/x-handlebars-template">  
                {{#each tasks}} 
                 {{#unless deleted}} 
-                <div class="{{#if done}}done{{/if}}" data-id="{{id}}"> 
+                <div class="{{done}}" data-id="{{id}}"> 
                         <label>
                         <input type="checkbox" value="{{text}}"/>{{text}}
                         </input>
