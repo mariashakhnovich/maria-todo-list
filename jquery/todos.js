@@ -16,6 +16,7 @@
          this.id = id;
          this.text = text;
          this.done = done;
+         this.checked = "";
      };
 
      function addNewTask() {
@@ -26,14 +27,9 @@
          if (newTask.text !== "") {
              toDoList.push(newTask);
              UI.text.val("");
-             displayTodos();
-         }  
-         showProgress();
-     }
+         } 
 
-     function displayTodos() {
-         var hbrs_text = todoTemplate(data);
-         UI.tasks.html(hbrs_text);
+         showProgress();
      }
 
      function selectAll() {
@@ -42,11 +38,18 @@
         } else {
             var trueOrFalse = !toDoList[0].done;
         }
+
+        if (trueOrFalse) {
+            var isChecked = "checked";
+        } else {
+            var isChecked = "";
+        }
+
         for (var i = 0; i<toDoList.length; i++) {
             toDoList[i].done = trueOrFalse;
-            UI.tasks.find("input").prop("checked", trueOrFalse);
+            toDoList[i].checked = isChecked;
         }
-        displayTodos();
+
         showProgress();  
      }
 
@@ -55,7 +58,7 @@
             val.done = false;
             val.deleted = true;
         })
-        displayTodos();
+
         showProgress();
      } 
 
@@ -66,6 +69,7 @@
                 doneTasks.push(val);
             }
         })
+        
         return doneTasks;  
      }
 
@@ -74,6 +78,8 @@
          var totalClass;
          var deleted = 0;
          var n = getDoneTasks(toDoList).length;
+         var hbrsText = todoTemplate(data);
+
          $.each(toDoList, function(i, val) {
             if (val.deleted){
                 deleted++;
@@ -84,32 +90,32 @@
         if (deleted === totalTasks) {
              totalClass = "emptyList";
              nd = "Enter a task!";
-             deleted = 0;
-             totalTasks = 0;
         } else {
              var temp = totalTasks - deleted;
              nd = "Done: " + n + " out of " + temp;
              totalClass = "inList";
-         }  
-         
+         }
+
          UI.total.text(nd).removeClass().addClass(totalClass);
+         UI.tasks.html(hbrsText);
      }
 
      UI.tasks.on("click", "input", function(event) {
         var todoId = $(this).closest("div").data("id");
-        var isDone = toDoList[todoId].done;
-        isDone = !isDone;
-        $(this).closest("div").prop("checked", isDone);
-        toDoList[todoId].done = isDone;
+        toDoList[todoId].done = !toDoList[todoId].done;
+        if (toDoList[todoId].done) {
+            toDoList[todoId].checked = "checked";
+        } else {
+            toDoList[todoId].checked = "";
+        }
+        console.log(toDoList[0].done);
         showProgress();
-        displayTodos();
         return false;
     }).on("click", ".delete", function(event) {
         var todoId = $(this).closest("div").data("id");
         $.each(toDoList, function(i, val){
             if (val.id ===todoId) {
                 val.deleted = true;
-                displayTodos();
                 showProgress();
             }
         })
