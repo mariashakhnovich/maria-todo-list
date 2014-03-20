@@ -1,24 +1,16 @@
  (function (exports) {
 
-     var UI = {
+    var UI = {
          tasks: $("#tasks"),
-         text: $("#txt")
+         text: $("#txt"),
+         todos: $("#todos"),
+         total: $("#total"),
+         addBtn: $("#addButton"),
+         selectAllBtn: $("#selectAll"),
+         deleteDoneBtn: $("#deleteDone")
      };
      
-
-     var todoTemplate = Handlebars.compile($('#todos').html());   
-     var toDoList = [];
-     var data = {"tasks": toDoList };
- 
-     var Task = function (id, text, done) {
-         this.id = id;
-         this.text = text;
-         this.done = done;
-     };
-
-   
      function addNewTask() {
-
          var text = UI.text.val();
          var done = false;
          var id = toDoList.length;
@@ -27,8 +19,7 @@
              toDoList.push(newTask);
              UI.text.val("");
              displayTodos();
-         }
-         
+         }  
          showProgress();
      }
 
@@ -44,7 +35,6 @@
 
      UI.tasks.on("click", ".delete", function(event) {
                  var todoId = $(this).closest("div").data("id");
-                 
                  /*$.each(toDoList, function(item){
                         if(item.id === todoId) {
                             item.deleted = true;
@@ -62,27 +52,22 @@
                  return false;
 
     });
-     
+
      function displayTodos() {
          var hbrs_text = todoTemplate(data);
          UI.tasks.html(hbrs_text);
      }
-     
- 
      var trueOrFalse = true;
-     
-     function selectAll() {
 
+     function selectAll() {
          $.each(toDoList, function(item) {
             item.done = trueOrFalse;
             UI.tasks.find('input').prop("checked", trueOrFalse);
+            console.log(UI.tasks.closest("div").attr("class"));
             UI.tasks.closest("div").toggleClass("done");
-               
          });
-
          trueOrFalse=!trueOrFalse;
-         showProgress();
-        
+         showProgress();  
      }
 
      function deleteDone() {
@@ -100,21 +85,32 @@
          var nd;
          var totalClass;
          var deleted = 0;
-         var n = $( "input:checked" ).length;
+         
+
+         var countDone = function(list) {
+            var done = 0;
+            for (var i =0; i<list.length; i++) {
+                if (list[i].done) {
+                    done++;
+                }
+            }
+            return done;
+         }
+         
+         var n = countDone(toDoList);
+         //how many are checked?
 
         /* $.each(toDoList, function(item) {
             if(item.deleted){
                 deleted++;
             }
          }); */
+
         for (var i = 0; i<toDoList.length; i++) {
             if (toDoList[i].deleted){
                 deleted++;
             }
         }
-
-
-
 
          var totalTasks = toDoList.length;
          if (deleted === totalTasks) {
@@ -126,15 +122,22 @@
              var temp = totalTasks - deleted;
              nd = "Done: " + n + " out of " + temp;
              totalClass = "inList";
-         }
-        
-         
-         $("#total").text(nd).removeClass().addClass(totalClass);
+         }  
+         UI.total.text(nd).removeClass().addClass(totalClass);
      }
 
-     $("#addButton").click(addNewTask);
-     $("#selectAll").click(selectAll);
-     $("#deleteDone").click(deleteDone);
+     var todoTemplate = Handlebars.compile(UI.todos.html());   
+     var toDoList = [];
+     var data = {"tasks": toDoList };
+     var Task = function (id, text, done) {
+         this.id = id;
+         this.text = text;
+         this.done = done;
+     };
+
+     UI.addBtn.click(addNewTask);
+     UI.selectAllBtn.click(selectAll);
+     UI.deleteDoneBtn.click(deleteDone);
 
  }(window));
 
