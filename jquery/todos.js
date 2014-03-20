@@ -1,5 +1,4 @@
  (function (exports) {
-    
      function addNewTask() {
          var text = UI.text.val();
          var done = false;
