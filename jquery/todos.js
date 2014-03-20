@@ -1,4 +1,21 @@
  (function (exports) {
+    var UI = {
+         tasks: $("#tasks"),
+         text: $("#txt"),
+         todos: $("#todos"),
+         total: $("#total"),
+         addBtn: $("#addButton"),
+         selectAllBtn: $("#selectAll"),
+         deleteDoneBtn: $("#deleteDone")
+     };
+     var todoTemplate = Handlebars.compile(UI.todos.html());   
+     var toDoList = [];
+     var data = {"tasks": toDoList };
+     var Task = function (id, text, done) {
+         this.id = id;
+         this.text = text;
+         this.done = done;
+     };
      function addNewTask() {
          var text = UI.text.val();
          var done = false;
@@ -29,30 +46,22 @@
         showProgress();  
      }
      function deleteDone() {
-        //this still doesn't work :( 
-        /* $.each(toDoList, function(item) {
-             if(item.done) {
-                 item.done = false;
-                 item.deleted = true;
-             }
-         });*/
-        //but this works:
-        for (var i = 0; i < toDoList.length; i++) {
-            if (toDoList[i].done) {
-                toDoList[i].done = false;
-                toDoList[i].deleted = true;
+        $.each(toDoList, function(i, val){
+            if(val.done){
+                val.done = false;
+                val.deleted = true;
             }
-        }
+        })
         displayTodos();
         showProgress();
      }     
      function getDoneTasks(list) {
         var doneTasks = [];
-        for (var i = 0; i<list.length; i++) {
-            if (list[i].done && !list[i].deleted) {
-                doneTasks.push(list[i]);
+        $.each(toDoList, function(i, val){
+            if (val.done && !val.deleted) {
+                doneTasks.push(val);
             }
-        }
+        })
         return doneTasks;  
      }
      function showProgress() {
@@ -60,11 +69,11 @@
          var totalClass;
          var deleted = 0;
          var n = getDoneTasks(toDoList).length;
-         for (var i = 0; i<toDoList.length; i++) {
-            if (toDoList[i].deleted){
+         $.each(toDoList, function(i, val) {
+            if (val.deleted){
                 deleted++;
             }
-        }
+        })
         var totalTasks = toDoList.length;
         if (deleted === totalTasks) {
              totalClass = "emptyList";
@@ -78,15 +87,6 @@
          }  
          UI.total.text(nd).removeClass().addClass(totalClass);
      }
-     var UI = {
-         tasks: $("#tasks"),
-         text: $("#txt"),
-         todos: $("#todos"),
-         total: $("#total"),
-         addBtn: $("#addButton"),
-         selectAllBtn: $("#selectAll"),
-         deleteDoneBtn: $("#deleteDone")
-     };
      UI.tasks.on("click", "input", function(event) {
         var todoId = $(this).closest("div").data("id");
         var isDone = toDoList[todoId].done;
@@ -99,23 +99,15 @@
     });
      UI.tasks.on("click", ".delete", function(event) {
         var todoId = $(this).closest("div").data("id");
-        for (var i = 0; i<toDoList.length; i++) {
-            if (toDoList[i].id === todoId) {
-                toDoList[i].deleted = true;
+        $.each(toDoList, function(i, val){
+            if (val.id ===todoId) {
+                val.deleted = true;
                 displayTodos();
                 showProgress();
             }
-        }  
+        })
         return false;
      });
-     var todoTemplate = Handlebars.compile(UI.todos.html());   
-     var toDoList = [];
-     var data = {"tasks": toDoList };
-     var Task = function (id, text, done) {
-         this.id = id;
-         this.text = text;
-         this.done = done;
-     };
      UI.addBtn.click(addNewTask);
      UI.selectAllBtn.click(selectAll);
      UI.deleteDoneBtn.click(deleteDone);
