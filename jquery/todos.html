@@ -5,7 +5,7 @@
 <head>
 	<link rel="stylesheet" type="css/text" href="todos.css"/>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-	<script type="text/x-handlebars-template" src="todos.js">/</script>
+	<script type="text/x-handlebars-template" src="todos.js"></script>
 </head>
 <body>
     <header>My ToDo list</header>
@@ -19,7 +19,7 @@
             <script id="todos" type="text/x-handlebars-template">  
                 {{#each tasks}} 
                 {{#unless deleted}}
-                <div class="{{#if done}}done{{/if}}" data-id="{{id}}" > 
+                <div class="{{#if done}}done{{/if}}" data-id="{{id}}"> 
                         <label><input type = "checkbox" value = "{{text}}"/><span  data-class = "{{done}}">{{text}}</span></label>
                         <button class="normal delete">X</button>      
                      </div>
