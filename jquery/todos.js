@@ -69,7 +69,6 @@
                 doneTasks.push(val);
             }
         })
-        
         return doneTasks;  
      }
 
@@ -108,7 +107,7 @@
         } else {
             toDoList[todoId].checked = "";
         }
-        console.log(toDoList[0].done);
+        
         showProgress();
         return false;
     }).on("click", ".delete", function(event) {
