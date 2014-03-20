@@ -12,7 +12,6 @@
          }  
          showProgress();
      }
-     
      function displayTodos() {
          var hbrs_text = todoTemplate(data);
          UI.tasks.html(hbrs_text);
@@ -27,7 +26,6 @@
             toDoList[i].done = trueOrFalse;
             UI.tasks.find("input").prop("checked", trueOrFalse);
         }
-        //trueOrFalse = !trueOrFalse;
         displayTodos();
         showProgress();  
      }
