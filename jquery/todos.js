@@ -91,26 +91,25 @@
          deleteDoneBtn: $("#deleteDone")
      };
      UI.tasks.on("click", "input", function(event) {
-                 var todoId = $(this).closest("div").data("id");
-                 var isDone = toDoList[todoId].done;
-                 isDone = !isDone;
-                 $(this).closest("div").prop("checked", isDone);
-                 //$(this).closest("div").toggleClass(toDoList[todoId].done);
-                 toDoList[todoId].done = isDone;
-                 showProgress();
-                 displayTodos();
-                 return false;
-     });
+        var todoId = $(this).closest("div").data("id");
+        var isDone = toDoList[todoId].done;
+        isDone = !isDone;
+        $(this).closest("div").prop("checked", isDone);
+        toDoList[todoId].done = isDone;
+        showProgress();
+        displayTodos();
+        return false;
+    });
      UI.tasks.on("click", ".delete", function(event) {
-                 var todoId = $(this).closest("div").data("id");
-                for (var i = 0; i<toDoList.length; i++) {
-                    if (toDoList[i].id === todoId) {
-                        toDoList[i].deleted = true;
-                        displayTodos();
-                        showProgress();
-                    }
-                }  
-                 return false;
+        var todoId = $(this).closest("div").data("id");
+        for (var i = 0; i<toDoList.length; i++) {
+            if (toDoList[i].id === todoId) {
+                toDoList[i].deleted = true;
+                displayTodos();
+                showProgress();
+            }
+        }  
+        return false;
      });
      var todoTemplate = Handlebars.compile(UI.todos.html());   
      var toDoList = [];
