@@ -76,8 +76,8 @@
          var progressHelperMessage;
          var progressMessageClassName;
          var hbrsText = todoTemplate(data);
-         var totalTasks = 0;
          var tasksDone = getDoneTasks(list);
+         var totalTasks = 0;
 
         $.each(list, function(i, val) {
             if(!val.deleted){
@@ -100,6 +100,7 @@
      UI.tasks.on("click", "input", function(event) {
         var todoId = $(this).closest("div").data("id");
         toDoList[todoId].done = !toDoList[todoId].done;
+        
         if (toDoList[todoId].done) {
             toDoList[todoId].checked = "checked";
         } else {
