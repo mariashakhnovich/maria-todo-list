@@ -29,7 +29,7 @@
              UI.text.val("");
          } 
 
-         showProgress();
+         render(toDoList);
      }
 
      function selectAll() {
@@ -50,7 +50,7 @@
             toDoList[i].checked = isChecked;
         }
 
-        showProgress();  
+        render(toDoList);  
      }
 
      function deleteDone() {
@@ -59,7 +59,7 @@
             val.deleted = true;
         })
 
-        showProgress();
+        render(toDoList);
      } 
 
      function getDoneTasks(list) {
@@ -72,30 +72,28 @@
         return doneTasks;  
      }
 
-     function showProgress() {
+     function render(list) {
          var progressHelperMessage;
          var progressMessageClassName;
-         var tasksDeleted = 0;
-         var tasksDone = getDoneTasks(toDoList).length;
          var hbrsText = todoTemplate(data);
+         var totalTasks = 0;
+         var tasksDone = getDoneTasks(list);
 
-         $.each(toDoList, function(i, val) {
-            if (val.deleted){
-                tasksDeleted++;
+        $.each(list, function(i, val) {
+            if(!val.deleted){
+                totalTasks++;
             }
         })
 
-        var totalTasks = toDoList.length;
-        if (tasksDeleted === totalTasks) {
+        if (totalTasks === 0) {
              progressMessageClassName = "emptyList";
              progressHelperMessage = "Enter a task!";
         } else {
-             var temp = totalTasks - tasksDeleted;
-             progressHelperMessage = "Done: " + tasksDone + " out of " + temp;
+             progressHelperMessage = "Done: " + tasksDone.length + " out of " + totalTasks;
              progressMessageClassName = "inList";
          }
 
-         UI.total.text(progressHelperMessage).removeClass().addClass(progressMessageClassName); //can move setting of class to handlebars
+         UI.total.text(progressHelperMessage).removeClass().addClass(progressMessageClassName);
          UI.tasks.html(hbrsText);
      }
 
@@ -108,14 +106,14 @@
             toDoList[todoId].checked = "";
         }
 
-        showProgress();
+        render(toDoList);
         return false;
     }).on("click", ".delete", function(event) {
         var todoId = $(this).closest("div").data("id");
         $.each(toDoList, function(i, val){
             if (val.id ===todoId) {
                 val.deleted = true;
-                showProgress();
+                render(toDoList);
             }
         })
         return false;
