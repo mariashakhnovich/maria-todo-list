@@ -7,10 +7,6 @@
     color: gray;
     text-decoration:line-through;}
 
-.deleted .todo-text {
-    color: green;
-}
-
 button[type="button"] {
     padding: 8px 15px;
     background: #4479BA;
@@ -29,7 +25,4 @@ input[type="text"] {
 }
 p.emptyList {
     color: red;
-}
-p.inList {
-    color:black;
 }
