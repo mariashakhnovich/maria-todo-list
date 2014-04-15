@@ -1,11 +1,5 @@
 describe("to do app testing", function() { 
 
-    describe("Hello world", function() {
-        it("says hello", function() {
-            expect(helloWorld()).toEqual("Hello world!");
-        });
-    });
-
     it("first task should be this is a test", function(){ 
     	addNewTask("this is a test");
         expect(toDoList[0]).toBe("this is a test"); 
