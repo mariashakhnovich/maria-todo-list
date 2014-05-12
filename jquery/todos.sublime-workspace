@@ -1,0 +1,272 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"done",
+				"doneTasks"
+			],
+			[
+				"tota",
+				"totalTasks"
+			],
+			[
+				"summary",
+				"summaryData"
+			],
+			[
+				"get",
+				"getDeletedTasks"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"true",
+				"trueOrFalse"
+			],
+			[
+				"dele",
+				"deleted"
+			],
+			[
+				"tru",
+				"trueOrFalse"
+			],
+			[
+				"di",
+				"displayTodos"
+			],
+			[
+				"add",
+				"addBtn"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"View: Toggle Status Bar"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/mariashakhnovich/Downloads/todoSpec.js",
+		"/Users/mariashakhnovich/Documents/plans",
+		"/Users/mariashakhnovich/Downloads/download/spec/jasmine/jasmine.js",
+		"/Users/mariashakhnovich/Downloads/download/spec/jasmine/jasmine.css",
+		"/Users/mariashakhnovich/Documents/todos-project/jquery/todos.css",
+		"/Users/mariashakhnovich/Documents/todos-project/jquery/todos.js",
+		"/Users/mariashakhnovich/Documents/todos-project/jquery/todos.html",
+		"/Users/mariashakhnovich/Documents/todos-project/todos.js",
+		"/Users/mariashakhnovich/Documents/todos-project/.gitignore",
+		"/Users/mariashakhnovich/Documents/todos.css",
+		"/Users/mariashakhnovich/Documents/todos.html",
+		"/Users/mariashakhnovich/Documents/todos.js"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"getDeleted",
+			"deleteDone",
+			"selectAll()",
+			"toDoList",
+			"addNewTask",
+			"exports",
+			"();\n",
+			"deleteDone",
+			".deleted",
+			"selecAll",
+			"for",
+			"deleted",
+			"\"),\n",
+			"getDeletedTasks",
+			"length",
+			"getDone",
+			"toDoList",
+			"render",
+			"render(getDoneTasks(toDoList));",
+			"render",
+			"showProgress",
+			"todoList",
+			"hbrsText",
+			"deleted",
+			"nd",
+			"console",
+			"deleted = 0",
+			"deleted = ",
+			"deleted",
+			"display",
+			"hbrs_text",
+			"hbrs",
+			"hrbs",
+			"temp",
+			"displayTodos",
+			"var isDone = toDoList[todoId].done;",
+			".each",
+			"\");\n",
+			"each",
+			"UI.tasks.find('input').prop(\"checked\", trueOrFalse);",
+			"selectAll",
+			"selectall",
+			"todoList",
+			"console.log",
+			"console.l",
+			"for",
+			"$(\"#tasks\")",
+			"UI.txt",
+			"UI.text",
+			"$(\"#txt\")"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"render(toDoList);",
+			"render",
+			"hbrsText",
+			"UI.tasks"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "todos.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"jasmine.js",
+				"spec/jasmine/jasmine.js"
+			],
+			[
+				"todo",
+				"src/todos.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}
