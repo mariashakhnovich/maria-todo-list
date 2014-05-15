@@ -5,22 +5,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-resource.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.8/angular-route.min.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="todosAng.js"></script>
   </head>
   <body>
     <h2>To-Do List</h2>
 		<div ng-controller="MainCtrl">
-       		<form ng-submit="addNewTask()">
-        		<input type="text" ng-model="todoText" placeholder="Enter your task here" class="chkbox">
-        		<input class="btn-normal" type="submit" value="Add task">
+       		<form name="newTask" ng-submit="addNewTask()">
+        		<input type="text" name="input" ng-model="todoText" placeholder="Enter your task here" class="chkbox">
+        		<input class="btn-standard" type="submit" required value="Add task">
       		</form>
+          <button ng-click="deleteDone(toDoList)" class="btn-standard">Delete Done</button> 
+          <button ng-click="toggleSelect(toDoList)" class="btn-standard">Select/Clear All</button> 
         	<ul ng-repeat="todo in toDoList">
         		<label>
           			<input type="checkbox" ng-model="todo.done">
           			<span class="{{todo.done}}">{{todo.text}}</span>
+                <button ng-click="deleteTask(todo)" class="btn-standard">X</button> 
           		</label>
         	</ul>
-       		<div class="{{}}">{{summaryMessage}}</div>   
+       		<div ng-show="toDoList.length === 0" class="error">Enter a task!</div>
+          <div ng-hide="toDoList.length === 0">Done {{getDoneTasks(toDoList).length}} of {{toDoList.length}}</div>
     	</div>
     </body>
 </html>
