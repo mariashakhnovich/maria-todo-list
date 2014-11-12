@@ -1,0 +1,21 @@
+<div ng-controller="mainPageController">
+    <h2>To-Do List</h2>
+          <form name="newTask" ng-submit="addNewTask()">
+            <input type="text" name="input" ng-model="todoText" placeholder="Enter your task here" class="chkbox">
+            <input class="btn-standard" type="submit" value="Add task" required>
+          </form>
+          <button ng-click="deleteDone(toDoList)" class="btn-standard">Delete Done</button> 
+          <button ng-click="toggleSelect(toDoList)" class="btn-standard">Select/Clear All</button> 
+          <ul ng-repeat="todo in toDoList">
+            <label>
+                <input type="checkbox" ng-model="todo.done">
+                <span class="{{todo.done}}">{{todo.text}}</span>
+                <a class="btn-standard" ng-href="#/todo/{{todo.id}}">Edit</a>
+                <button ng-click="deleteTask(todo)" class="btn-standard">Delete</button>
+            </label>
+          </ul>
+          <div ng-show="toDoList.length === 0" class="error">Enter a task!</div>
+          <!-- <div ng-hide="toDoList.length === 0">Done {{getDoneTasksCount(toDoList)}} of {{toDoList.length}}</div>-->
+          <!-- <button ng-click="showLocalStorage($storage.toDoList)" class="btn-standard">What's in storage?</button> -->
+          <!--    <button ng-click="$storage.toDoList.text = $storage.toDoList.text + 'abc'">{{$storage.toDoList}}</button> -->
+</div>
